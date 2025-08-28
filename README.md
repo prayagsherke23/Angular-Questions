@@ -1,4 +1,6 @@
 1.Difference between subjects and Observable
+
+All subscribers to a subject share the same execution of the subject… This behavior is different from observables, where each subscription causes an independent execution of the observable.
 -------------------------------------------------
 <app-top-bar></app-top-bar>
 
@@ -72,6 +74,7 @@ export class AppComponent {
       this.observableData2 = data
     })
   }
+  //Each subscription logs different random values.
 
   getSubject(){
     let mySubject = new Subject<any>();
@@ -85,4 +88,5 @@ export class AppComponent {
     // mySubject.next('Please Data Subject'); 
     mySubject.next(Math.floor(Math.random()*99)+1); 
   }
-}=-[
+  //Both subscribers receive the same value.
+}
